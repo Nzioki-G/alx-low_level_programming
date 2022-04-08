@@ -23,8 +23,11 @@ int main(void)
 				{
 					putchar('0' + tens);
 					putchar('0' + ones);
-					putchar(',');
-					putchar(' ');
+					if (tens != 8)
+					{
+						putchar(',');
+						putchar(' ');
+					}
 				}
 			}
 		}
