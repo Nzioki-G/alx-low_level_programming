@@ -6,10 +6,12 @@
   **/
 int main(void)
 {
-	int tens=0;
+	int tens = 0;
+
 	for (; tens <= 9; tens++)
 	{
-		int ones=0;
+		int ones = 0;
+
 		for (; ones <= 9; ones++)
 		{
 			if (tens != ones)
