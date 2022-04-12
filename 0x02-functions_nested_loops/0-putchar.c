@@ -7,6 +7,7 @@
 int main(void)
 {
 	char string[] = "_putchar";
+
 	printString(string);
 	return (0);
 }
