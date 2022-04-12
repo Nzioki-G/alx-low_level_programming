@@ -13,3 +13,13 @@ void printString(char str[])
 		_putchar(str[i]);
 	_putchar('\n');
 }
+
+/**
+  * main - calls fn
+  * Return: 0
+  */
+int main(void)
+{
+	printString("_putchar");
+	return (0);
+}
