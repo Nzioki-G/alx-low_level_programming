@@ -16,7 +16,7 @@ int main(void)
 		fib = pp + prev;
 		pp = prev;
 		prev = fib;
-		printf("%lu", fib);
+		printf("[%d %lu]",counter, fib);
 		if (counter < 97)
 			printf(", ");
 		counter++;
