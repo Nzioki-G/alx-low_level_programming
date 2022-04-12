@@ -8,10 +8,8 @@ int main(void)
 {
 	/* @pp: F(n-2), @prev: F(n-1), @fib: F(n) */
 	long int pp = 0, prev = 1, fib;
-	int counter = 2;
+	int counter = 0;
 
-
-	printf("0, 1, ");
 	while (counter < 50)
 	{
 		fib = pp + prev;
