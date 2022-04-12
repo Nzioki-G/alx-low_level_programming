@@ -16,9 +16,9 @@ int main(void)
 		fib = pp + prev;
 		pp = prev;
 		prev = fib;
-		printf("%.0Lf, ", fib);
-/*		if (counter < 97)
-			printf(", "); */
+		printf("%.0Lf", fib);
+		if (counter < 97)
+			printf(", ");
 		counter++;
 	}
 	printf("\n");
