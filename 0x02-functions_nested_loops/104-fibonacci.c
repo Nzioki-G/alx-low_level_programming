@@ -10,7 +10,7 @@ int main(void)
 	unsigned long int pp = 0, prev = 1, fib = 0;
 	int counter = 0;
 
-	while (counter < 98)
+	while (counter <= 98)
 	{
 		/* get @fib, set @pp & @prev */
 		fib = pp + prev;
