@@ -7,7 +7,7 @@
 int main(void)
 {
 	/* @pp: F(n-2), @prev: F(n-1), @fib: F(n) */
-	long int pp = 0, prev = 1, fib = 0;
+	unsigned long int pp = 0, prev = 1, fib = 0;
 	int counter = 0;
 
 	while (counter < 98)
@@ -16,7 +16,7 @@ int main(void)
 		fib = pp + prev;
 		pp = prev;
 		prev = fib;
-		printf("%li", fib);
+		printf("%lu", fib);
 		if (counter < 97)
 			printf(", ");
 		counter++;
