@@ -2,8 +2,8 @@
 
 /**
   * add - adds 2 ints
-  * @num1 - first int
-  * @num2 - 2nd number
+  * @num1: first int
+  * @num2: 2nd number to be added
   * Return: sum
   */
 int add(int num1, int num2)
