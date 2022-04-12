@@ -8,8 +8,8 @@
 void print_nums(int num)
 {
 	/* remove the last recursively*/
-	if (num/10 > 0)
-		print_nums(num/10);
+	if (num / 10 > 0)
+		print_nums(num / 10);
 
 	/* print the last digit */
 	_putchar('0' + (num % 10));
