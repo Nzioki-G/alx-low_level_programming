@@ -1,13 +1,15 @@
 #include "main.h"
 
 /**
-  * main - prints a string
-  * Return: 0
+  * printString - prints a string
+  * @str: the string to be printed
+  * Return: void
   */
-int main(void)
+void printString(char str[])
 {
-	char string[] = "_putchar";
+	unsigned long int i;
 
-	printString(string);
-	return (0);
+	for (i = 0; i <= strlen(str); i++)
+		_putchar(str[i]);
+	_putchar('\n');
 }
