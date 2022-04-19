@@ -7,21 +7,27 @@
   */
 void print_number(int n)
 {
-	int count = 0, reverse;
+	/* if @n is INT_MIN, its +ve value is larger than INT_MAX */
+	unsigned int num;
+	int count = 0, reverse = 1;
 
+	/* if @n is -ve, print -, make it positive for processing */
 	if (n < 0)
 	{
 		_putchar('-');
-		n *= -1;
+		num = n * -1;
 	}
-	if (n == 0)
+	else
+		num = n;
+
+	if (num == 0)
 		_putchar('0');
 
-	while (n >= 1)
+	while (num != 0)
 	{
 		reverse *= 10;
-		reverse += (n % 10);
-		n /= 10;
+		reverse += (num % 10);
+		num /= 10;
 		count++;
 	}
 	while (count > 0)
