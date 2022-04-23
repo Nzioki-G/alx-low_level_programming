@@ -21,9 +21,6 @@ char *cap_string(char *str)
 			/* check for lower case first */
 			if (str[index + 1] >= 97 && str[index + 1] <= 122)
 				str[index + 1] -= 32;
-			/* if \t replace with SPACE */
-			if (str[index] == 9)
-				str[index] = 32;
 			index++;
 			continue;
 		}
