@@ -17,7 +17,8 @@ char *rot13(char *str)
 		if (isalpha(str[index]))
 		{
 			/* if its a-mA-M */
-			if((str[index] >= 97 && str[index] <= 109) || (str[index] >= 65 && str[index] <= 77))
+			if ((str[index] >= 97 && str[index] <= 109)
+|| (str[index] >= 65 && str[index] <= 77))
 				str[index] += 13;
 			/* else its n-zN-Z */
 			else
