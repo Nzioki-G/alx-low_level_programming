@@ -15,6 +15,11 @@ char *cap_string(char *str)
 	while (str[index])
 	{
 		char ch = str[index];
+
+		/* if the first-most ch islower */
+		if (index == 0 && (ch >= 97 && ch <= 122))
+			str[index] -= 32;
+
 		/* meet a space, ., \n or tab capitalize next letter */
 		for (i = 0; i < 13; i++)
 		{
