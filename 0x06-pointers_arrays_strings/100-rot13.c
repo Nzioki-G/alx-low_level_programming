@@ -8,21 +8,22 @@
   */
 char *rot13(char *str)
 {
-	int index = 0;
-
+	int index = 0, i, ch;
+	char alphabet[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char rot13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 	/* loop to terminator */
 	while (str[index])
 	{
-		/* if it's an alphabetic character.. */
-		if (isalpha(str[index]))
+		ch = str[index];
+		/* check for alphabetic characters */
+		for (i = 0; i < 52; i++)
 		{
-			/* if its a-mA-M */
-			if ((str[index] >= 97 && str[index] <= 109)
-|| (str[index] >= 65 && str[index] <= 77))
-				str[index] += 13;
-			/* else its n-zN-Z */
-			else
-				str[index] -= 13;
+			/* when you get a match, rot13 it then quit looping */
+			if (ch == alphabet[i])
+			{
+				str[index] = rot13[i];
+				continue;
+			}
 		}
 		index++;
 	}
