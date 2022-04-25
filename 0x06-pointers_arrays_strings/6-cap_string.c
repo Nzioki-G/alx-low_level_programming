@@ -8,21 +8,26 @@
   */
 char *cap_string(char *str)
 {
-	int index = 0;
+	int index = 0, i;
+	int array[] = {9, 10, 32, 33, 34, 40, 41, 44, 46, 59, 63, 123, 125};
 
 	/* loop through string upto null terminator */
 	while (str[index])
 	{
-		char c = str[index];
+		char ch = str[index];
 		/* meet a space, ., \n or tab capitalize next letter */
-		if (c == 44 || c == 46 || c == 63 || (c >= 1 && c <= 34)
-|| c == 59 || c == 40 || c == 41 || c == 123 || c == 125)
+		for (i = 0; i < 13; i++)
 		{
-			/* check for lower case first */
-			if (str[index + 1] >= 97 && str[index + 1] <= 122)
-				str[index + 1] -= 32;
-			index++;
-			continue;
+			if (ch == array[i])
+			{
+				/* check if lower case b4 converting */
+				if (str[index + 1] >= 97 && str[index + 1] <= 122)
+				{
+					str[index + 1] -= 32;
+					index++;
+					continue;
+				}
+			}
 		}
 		index++;
 	}
