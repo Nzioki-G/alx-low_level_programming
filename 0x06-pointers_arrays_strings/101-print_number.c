@@ -13,7 +13,6 @@ void print_number(int n)
 
 	if (n == 0)
 		_putchar('0');
-
 	/* if n is -ve print then remove the sign */
 	if (n < 0)
 	{
@@ -23,22 +22,18 @@ void print_number(int n)
 	else
 		num = n;
 
-	/* reverse the number */
 	while (num != 0)
 	{
 		last_digit = num % 10;
-
 		/* if reverse>INT_MAX, quit */
 		if (rev * 10 > INT_MAX)
 		{
 			_putchar('0' + last_digit);
 			break;
 		}
-		rev *= 10;
-		rev += last_digit;
+		rev = rev * 10 + last_digit;
 		num /= 10;
 	}
-
 	/* print from last until one(first) digit remains */
 	while (rev != 0)
 	{
@@ -46,7 +41,6 @@ void print_number(int n)
 		_putchar('0' + last_digit);
 		rev /= 10;
 	}
-
 	/* deal with multiples of 10 */
 	while (n % 10 == 0)
 	{
