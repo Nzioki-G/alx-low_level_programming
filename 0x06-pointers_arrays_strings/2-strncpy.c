@@ -9,20 +9,21 @@
   */
 char *_strncpy(char *dest, char *src, int n)
 {
-	int index = 0;
+	int i = 0;
 
-	/* copy 0-n chars to destination assuming it was empty */
-	while (index < n)
+	/* write into dest on n spaces */
+	/* while src has actual data, copy */
+	while (src[i] && i < n)
 	{
-		/* if you meet the terminator in src, quit copying */
-		if (!src[index])
-		{
-			/* place the terminator at the end of string dest */
-			dest[index] = src[index];
-			break;
-		}
-		dest[index] = src[index];
-		index++;
+		dest[i] = src[i];
+		i++;
+	}
+
+	/* if src is terminated but dest persist, put null into dest */
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
 	}
 	return (dest);
 }
