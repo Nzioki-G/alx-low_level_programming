@@ -1,5 +1,4 @@
 #include "main.h"
-#include <limits.h>
 
 /**
   * print_number - prints a number using only _putchar
@@ -24,25 +23,34 @@ void print_number(int n)
 	else
 		num = n;
 
-
 	/* reverse the number */
-	while (num / 10 > 0)
+	while (num != 0)
 	{
 		last_digit = num % 10;
+
+		/* if reverse>INT_MAX, quit */
+		if (rev * 10 > INT_MAX)
+		{
+			_putchar('0' + last_digit);
+			break;
+		}
 		rev *= 10;
 		rev += last_digit;
 		num /= 10;
 	}
-	/* add the last digit */
-	rev = rev * 10 + num;
 
 	/* print from last until one(first) digit remains */
-	while (rev / 10 > 0)
+	while (rev != 0)
 	{
 		last_digit = rev % 10;
 		_putchar('0' + last_digit);
 		rev /= 10;
 	}
-	/* print the last digit */
-	_putchar('0' + rev);
+
+	/* deal with multiples of 10 */
+	while (n % 10 == 0)
+	{
+		_putchar('0');
+		n /= 10;
+	}
 }
