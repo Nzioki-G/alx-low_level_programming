@@ -42,7 +42,7 @@ void print_number(int n)
 		rev /= 10;
 	}
 	/* deal with multiples of 10 */
-	while (n % 10 == 0)
+	while (n % 10 == 0 && n != 0)
 	{
 		_putchar('0');
 		n /= 10;
