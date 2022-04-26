@@ -8,36 +8,34 @@
   */
 void print_diagsums(int *a, int size)
 {
-	int row, col, index = -1, sum_left = 0, sum_right = 0;
+	int row, col, index = 0, sum_left = 0, sum_right = 0;
 
 	for (row = 0; row < size; row++)
 	{
 		for (col = 0; col < size; col++)
 		{
-			index++;
 			if (row == col)
 			{
-				printf("r=%d, c=%d, index:%d \n", row, col, index);
 				sum_left += a[index];
 			}
+			index++;
 		}
 	}
-	printf("d1:%d \n", sum_left);
+	printf("%d, ", sum_left);
 
-	index = -1;
+	index = 0;
 	for (row = 0; row < size; row++)
 	{
 		for (col = 0; col < size; col++)
 		{
-			index++;
 
 			if (row + col == (size - 1))
 			{
-				printf("r=%d, c=%d, index:%d\n", row, col, index);
 				sum_right += a[index];
 			}
+			index++;
 		}
 	}
 
-	printf("d2:%d\n", sum_right);
+	printf("%d\n", sum_right);
 }
