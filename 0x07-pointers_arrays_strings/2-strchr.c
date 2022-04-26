@@ -9,7 +9,7 @@
 char *_strchr(char *s, char c)
 {
 	int i = 0;
-	char *ptr_to_c;
+	char *ptr_to_c = NULL;
 
 	/* loop to the end of string s */
 	while (s[i])
