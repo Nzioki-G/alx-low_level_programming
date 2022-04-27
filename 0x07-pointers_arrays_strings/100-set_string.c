@@ -1,4 +1,5 @@
 #include "main.h"
+#include <string.h>
 
 /**
   * set_string - sets the value of a pointer to a char
@@ -8,19 +9,5 @@
   */
 void set_string(char **s, char *to)
 {
-	int i = 0;
-
-	/* loop to the end of "to" */
-	while (to[i])
-	{
-		s[i] = &to[i];
-		i++;
-	}
-
-	/* terminate **s in all its non-null spaces */
-	while (s[i] && !to[i])
-	{
-		s[i] = '\0';
-		i++;
-	}
+	*s = to;
 }
