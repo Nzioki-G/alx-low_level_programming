@@ -10,9 +10,9 @@
 int isPrime(int num, int i)
 {
 	/* base cases: 1, 2, and not-prime */
-	if (abs(num) == 1)
+	if (num == 1)
 		return (0);
-	if (abs(num) == 2)
+	if (num == 2)
 		return (1);
 	if (num % i == 0)
 		return (0);
@@ -31,5 +31,5 @@ int isPrime(int num, int i)
 int is_prime_number(int n)
 {
 	/* call a fn that has a static variable divisor */
-	return (isPrime(n, 2));
+	return (isPrime(abs(n), 2));
 }
