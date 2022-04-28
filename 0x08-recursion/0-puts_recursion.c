@@ -20,5 +20,5 @@ void _puts_recursion(char *s)
 	_putchar(s[i]);
 
 	/* call this fn again with string from 2nd char */
-	_puts_recursion(&s[i+1]);
+	_puts_recursion(&s[i + 1]);
 }
