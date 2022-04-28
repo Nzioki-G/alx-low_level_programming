@@ -9,17 +9,17 @@
   */
 int isPrime(int num, int i)
 {
-	/* base cases: 1, 2, and not-prime */
+	/* base cases: 1, 2, prime and not-prime */
 	if (num == 1)
 		return (0);
 	if (num == 2)
 		return (1);
+	if (num < (i * i))
+		return (1);
 	if (num % i == 0)
 		return (0);
 
-	/* when it's a prime, i^2>num */
-	if (num < (i * i))
-		return (1);
+	/* inc. the divisor */
 	return (isPrime(num, i + 1));
 }
 
