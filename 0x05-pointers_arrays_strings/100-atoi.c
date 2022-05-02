@@ -1,4 +1,5 @@
 #include "main.h"
+#include <ctype.h>
 
 /**
   * _atoi - converts a string to an int
@@ -7,11 +8,16 @@
   */
 int _atoi(char *s)
 {
-	int index = 0, integer = 0, negative_flag = 0;
+	int index = 0, integer = 0, negative_flag = 0, negatives = 0;
 
 	/* go through string */
 	while (s[index])
 	{
+		/* if you meet a - count them */
+		if (s[index] == 45)
+		{
+			negatives++;
+		}
 		/* if you meet a number */
 		if (s[index] >= 48 && s[index] <= 57)
 		{
@@ -21,8 +27,8 @@ int _atoi(char *s)
 		index++;
 	}
 
-	/* if the previous place is valid, check for negative sign */
-	if (s[index - 1] && s[index - 1] == 45)
+	/* if previous place isn't alphabet, check the num of -ve sign */
+	if (s[index - 1] && !isalpha(s[index - 1]) && negatives % 2 == 1)
 	{
 		negative_flag = 1;
 	}
