@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 			{
 				/* if you meet a non-digit */
 				printf("Error\n");
-				break;
+				return (1);
 			}
 		}
 	}
