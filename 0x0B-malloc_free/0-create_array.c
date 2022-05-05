@@ -1,4 +1,4 @@
-#include "main.h"
+#include "holberton.h"
 
 /**
   * create_array - creates a character array & initializes
