@@ -9,7 +9,7 @@
 int **alloc_grid(int width, int height)
 {
 	int i, j;
-	int **ar; /* arr points to a pointer of int array */
+	int **ar; /* array of pointers (arrays) */
 
 	/* if either args <=0 */
 	if (width <= 0 || height <= 0)
@@ -18,16 +18,19 @@ int **alloc_grid(int width, int height)
 	}
 
 	/* malloc FOR rows in ar */
-	ar = malloc(height * sizeof(int *));
+	ar = (int **)malloc(height * sizeof(int *));
 
-	/* malloc WITHIN row */
-	for (i = 0; i < height; i++)
+	/* malloc WITHIN row if rows exist */
+	if (ar)
 	{
-		*(ar + i) = malloc(width * sizeof(int));
+		for (i = 0; i < height; i++)
+		{
+			*(ar + i) = (int *)malloc(width * sizeof(int));
+		}
 	}
 
 	/* check that malloc worked */
-	if (ar && *ar)
+	if (*ar)
 	{
 		for (i = 0; i < height; i++)
 		{
