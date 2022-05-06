@@ -13,9 +13,7 @@ int **alloc_grid(int width, int height)
 
 	/* if either args <=0 */
 	if (width <= 0 || height <= 0)
-	{
 		return (NULL);
-	}
 
 	/* malloc FOR rows in ar */
 	ar = (int **)malloc(height * sizeof(int *));
@@ -29,7 +27,10 @@ int **alloc_grid(int width, int height)
 		}
 	}
 	else
+	{
+		free(ar);
 		return (NULL);
+	}
 
 	/* check that malloc worked */
 	if (ar && *ar)
