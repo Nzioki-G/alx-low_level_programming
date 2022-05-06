@@ -21,10 +21,16 @@ char *create_array(unsigned int size, char c)
 		/* allocate size * 1 of memo */
 		ar = malloc(size * sizeof(char));
 
-		for (i = 0; i < size; i++)
+		/* check if memory isn't null */
+		if (ar)
 		{
-			ar[i] = c;
+			for (i = 0; i < size; i++)
+			{
+				ar[i] = c;
+			}
+			return (ar);
 		}
-		return (ar);
+		else
+			return (ar);
 	}
 }
