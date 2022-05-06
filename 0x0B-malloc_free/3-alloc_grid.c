@@ -18,7 +18,7 @@ int **alloc_grid(int width, int height)
 	}
 
 	/* malloc FOR rows in ar */
-	ar = malloc(height * sizeof(int));
+	ar = malloc(height * sizeof(int *));
 
 	/* malloc WITHIN row */
 	for (i = 0; i < height; i++)
