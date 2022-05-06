@@ -26,12 +26,14 @@ char *str_concat(char *s1, char *s2)
 			/* first paste s1 */
 			new_str[i] = s1[i];
 		}
-		for (j = 0; j <= n2; j++)
+		for (j = 0; j < n2; j++)
 		{
-			/* paste s2 all the way to the null byte */
+			/* paste s2 ignoring the null byte */
 			new_str[i] = s2[j];
 			i++;
 		}
+		/* add the null byte */
+		new_str[i] = '\0';
 		/* return conctatenated string */
 		return (new_str);
 	}
