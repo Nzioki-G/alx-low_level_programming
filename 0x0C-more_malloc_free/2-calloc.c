@@ -11,6 +11,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	unsigned int i;
 	char *ar;
+	void *mem;
 
 	if (!nmemb || !size)
 	{
@@ -18,17 +19,18 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	}
 
 	/* allcate the mem */
-	ar = malloc(nmemb * size);
+	mem = malloc(nmemb * size);
 
 	/* confirm mem was allocated */
-	if (ar)
+	if (mem)
 	{
+		ar = mem;
 		for (i = 0; i < nmemb; i++)
 		{
 			/* initialize with 0 */
 			ar[i] = '\0';
 		}
-		return ((void *)ar);
+		return (mem);
 	}
 	return (NULL);
 }
