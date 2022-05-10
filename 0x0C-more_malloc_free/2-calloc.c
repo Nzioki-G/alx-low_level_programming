@@ -28,7 +28,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 			/* initialize with 0 */
 			ar[i] = '\0';
 		}
-		return (ar);
+		return ((void *)ar);
 	}
 	return (NULL);
 }
