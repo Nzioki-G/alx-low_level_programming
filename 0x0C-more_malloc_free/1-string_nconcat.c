@@ -18,31 +18,33 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	len1 = (s1) ? strlen(s1) : 0;
 	len2 = (s2) ? strlen(s2) : 0;
 
-	/* if n > len2, use strlen as n */
-	n = (n > len2) ? len2 : n;
+	n = (n > len2) ? len2 : n;/* use lesser of strlen & n */
 
 	/* allocate mem for new string */
 	if ((len1 + n) != 0)
-	{
 		snew = malloc((sizeof(char) * (len1 + n)) + 1);
-	}
 
-	/* check if malloc worked */
-	if (snew)
+	if (snew) /* check if malloc worked */
 	{
 		if (s1)
 			strcpy(snew, s1);
-		x = 0;
-		for (i = len1; i < (n + len1); i++)
+
+		if (s2)
 		{
-			snew[i] = s2[x];
-			x++;
+			x = 0;
+			for (i = len1; i < (n + len1); i++)
+			{
+				snew[i] = s2[x];
+				x++;
+			}
+			snew[i] = '\0';
 		}
-		snew[i] = '\0';
+		/* if we did add something, terminate */
+		if (snew)
+			strcat(snew, "\0");
+
 		return (snew);
 	}
 	else
-	{
 		return (NULL);
-	}
 }
