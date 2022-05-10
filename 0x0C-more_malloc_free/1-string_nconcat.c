@@ -22,12 +22,16 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	n = (n > len2) ? len2 : n;
 
 	/* allocate mem for new string */
-	snew = malloc((sizeof(char) * (len1 + n)) + 1);
+	if ((len1 + n) != 0)
+	{
+		snew = malloc((sizeof(char) * (len1 + n)) + 1);
+	}
 
 	/* check if malloc worked */
 	if (snew)
 	{
-		strcpy(snew, s1);
+		if (s1)
+			strcpy(snew, s1);
 		x = 0;
 		for (i = len1; i < (n + len1); i++)
 		{
