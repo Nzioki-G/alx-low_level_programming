@@ -25,7 +25,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	if (mem)
 	{
 		ar = mem;
-		for (i = 0; i < nmemb; i++)
+		for (i = 0; i < (nmemb * size); i++)
 		{
 			/* initialize with 0 */
 			ar[i] = '\0';
