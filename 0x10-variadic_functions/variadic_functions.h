@@ -2,7 +2,9 @@
 #define HEADER_FILE
 
 #include <stdarg.h>
+#include <stdio.h>
 
 int sum_them_all(const unsigned int, ...);
+void print_numbers(const char *separator, const unsigned int, ...);
 
 #endif
