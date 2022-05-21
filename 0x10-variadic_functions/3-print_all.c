@@ -10,11 +10,15 @@
 void print_all(const char * const format, ...)
 {
 	int i = 0;
-	char c;
+	char c, *str;
 
 	va_list(args);
 
+	if (!format)
+		return;
+
 	va_start(args, format);
+
 	while (format[i])
 	{
 		c = format[i];
@@ -30,7 +34,10 @@ void print_all(const char * const format, ...)
 				printf("%d", va_arg(args, int));
 				break;
 			case 115:
-				printf("%s", va_arg(args, char *));
+				str = va_arg(args, char *);
+				if(!str)
+					str = "(nil)";
+				printf("%s", str);
 				break;
 			default:
 				break;
