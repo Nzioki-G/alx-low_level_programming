@@ -35,8 +35,7 @@ void print_all(const char * const format, ...)
 				break;
 			case 115:
 				str = va_arg(args, char *);
-				if(!str)
-					str = "(nil)";
+				str = str ? str : "(nil)";
 				printf("%s", str);
 				break;
 			default:
