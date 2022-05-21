@@ -15,7 +15,10 @@ void print_all(const char * const format, ...)
 	va_list(args);
 
 	if (!format)
+	{
+		printf("\n");
 		return;
+	}
 
 	va_start(args, format);
 
