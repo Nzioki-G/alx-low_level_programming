@@ -11,7 +11,7 @@ list_t *add_node(list_t **head, const char *str)
 {
 	/* our struct takes: str, len, *next */
 	char *name = strdup(str);
-	unsigned int length = strlen(name);
+	unsigned int length;
 	list_t *new;
 
 	new = malloc(sizeof(list_t));
@@ -27,6 +27,8 @@ list_t *add_node(list_t **head, const char *str)
 		return (NULL);
 	}
 
+	length = strlen(name);
+	
 	/* if we've allocated memory successfully... */
 	new->str = name;
 	new->len = length;
