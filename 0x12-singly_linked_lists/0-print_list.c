@@ -10,12 +10,6 @@ size_t print_list(const list_t *h)
 {
 	int i = 0;
 
-	if (!h) /* if the head is null */
-	{
-		printf("[0] (nil)");
-		return (0);
-	}
-
 	while (h)
 	{
 		if (h->str)
