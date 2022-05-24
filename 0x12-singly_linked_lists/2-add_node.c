@@ -28,7 +28,7 @@ list_t *add_node(list_t **head, const char *str)
 	}
 
 	length = strlen(name);
-	
+
 	/* if we've allocated memory successfully... */
 	new->str = name;
 	new->len = length;
