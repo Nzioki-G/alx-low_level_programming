@@ -11,7 +11,7 @@ void free_listint2(listint_t **head)
 
 	/* empty case */
 	if (!*head)
-		return;
+		free(*head);
 
 	while (*head)
 	{
