@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * free_listint_2 - frees a list and sets head to NULL
+ * free_listint2 - frees a list and sets head to NULL
  * @head: double pointer to first elemnt
  * Return: nothing
  */
