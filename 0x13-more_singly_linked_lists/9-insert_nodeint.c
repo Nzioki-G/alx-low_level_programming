@@ -5,13 +5,12 @@
  * @head: double pointer to the first node
  * @idx: the position to add
  * @n: the element value of node being inserted
- *
  * Return: pointer to node inserted
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	unsigned int i = 0;
-	listint_t *add_me, *current_node, *temp;
+	unsigned int i = 1;
+	listint_t *add_me, *current, *temp;
 
 	add_me = malloc(sizeof(listint_t));
 
@@ -20,23 +19,29 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 
 	else
 	{
-		current_node = *head;
-		while (current_node)
+		add_me->n = n;
+		/* if we're inserting at the head */
+		if (idx == 0)
 		{
-			if (i + 1 == idx)
+			add_me->next = *head;
+			*head = add_me;
+		}
+		else
+		{
+			current = *head;
+			while (i < idx)
 			{
-				/*
-				 * link to previous node => current
-				 * link to next => current.next
-				 */
-				temp = current_node->next; /* link to next */
-				add_me->n = n;
-				add_me->next = temp; /* set next node */
-				current_node->next = add_me; /* current => new => temp */
-				return (*head);
+				current = current->next;
+				if (!current) /* we reach the end && i<index */
+					return (NULL);
+				i++;
 			}
-			i++;
-			current_node = current_node->next;
+			/* when we reach the desired location */
+			temp = current->next; /* temp holds i+1 */
+			current->next = add_me;
+			add_me->next = temp; /* addme points i as next */
+			/* ==> current --> add_me --> current.next */
+			return (*head);
 		}
 	}
 	/* if we get here, then something didn't go well */
