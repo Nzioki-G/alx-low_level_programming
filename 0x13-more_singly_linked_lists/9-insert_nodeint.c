@@ -18,23 +18,26 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	if (!add_me)
 		return (NULL);
 
-	current_node = *head;
-	while (current_node)
+	else
 	{
-		if (i == idx)
+		current_node = *head;
+		while (current_node)
 		{
-			/*
-			 * link to previous node => current
-			 * link to next => current.next
-			 */
-			temp = current_node->next; /* link to next */
-			add_me->n = n;
-			add_me->next = temp; /* set next node */
-			current_node->next = add_me; /* current => new => temp */
-			return (current_node);
+			if (i == idx)
+			{
+				/*
+				 * link to previous node => current
+				 * link to next => current.next
+				 */
+				temp = current_node->next; /* link to next */
+				add_me->n = n;
+				add_me->next = temp; /* set next node */
+				current_node->next = add_me; /* current => new => temp */
+				return (current_node);
+			}
+			i++;
+			current_node = current_node->next;
 		}
-		i++;
-		current_node = current_node->next;
 	}
 	/* if we get here, then something didn't go well */
 	return (NULL);
