@@ -16,6 +16,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 
 	if (!add_me)
 		return (NULL);
+
 	else
 	{
 		add_me->n = n;
@@ -37,8 +38,8 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 			}
 			/* when we reach the desired location */
 			temp = current->next; /* temp holds i+1 */
-			current->next = add_me;
 			add_me->next = temp; /* addme points i as next */
+			current->next = add_me;
 			/* ==> current --> add_me --> current.next */
 			return (add_me);
 		}
