@@ -6,7 +6,7 @@
  * @loopy: point in list where there is a loop
  * Return: nothing
  */
-listint_t *removeloop(listint_t *first, listint_t *loopy)
+void removeloop(const listint_t *first, listint_t *loopy)
 {
 	listint_t *ptr = loopy;
 
@@ -24,7 +24,6 @@ listint_t *removeloop(listint_t *first, listint_t *loopy)
 	}
 	/* we have the two nodes that form a loop: break it */
 	ptr->next = NULL;
-	return (first);
 }
 
 /**
@@ -34,23 +33,24 @@ listint_t *removeloop(listint_t *first, listint_t *loopy)
  *
  * Return: number of nodes in the list
  */
-size_t print_listint_safe(listint_t *head)
+size_t print_listint_safe(const listint_t *head)
 {
 	int i = 0;
-	listint_t *slow = head, *fast = head;
+	listint_t *slow, *fast;
 
-	while (slow && fast && fast->next)
+	while (head)
 	{
-		printf("[%p] [%d]\n", (void *)slow, slow->n);
-		slow = slow->next;
-		fast = fast->next->next;
+		printf("[%p] %d\n", (void *)head, head->n);
+		slow = head->next;
+		fast = head->next->next;
 		if (slow == fast)
 		{
 			/* we have a loop */
-			slow = removeloop(head, slow);
+			removeloop(head, slow);
 		}
+		head = head->next;
 		i++;
 	}
-
+	printf("i=%d\n", i);
 	return (i);
 }
