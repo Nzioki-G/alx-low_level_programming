@@ -1,6 +1,27 @@
 #include "main.h"
 
 /**
+ * _pow - gets the value of base raised to power exponent
+ * @base: number to raise
+ * @exponent: raise by
+ * Return: the power
+ */
+unsigned int _pow(int base, int exponent)
+{
+	unsigned int product = 1;
+
+	if (exponent == 0)
+		return (1);
+
+	while (exponent > 0)
+	{
+		product *= base;
+		exponent--;
+	}
+	return (product);
+}
+
+/**
  * binary_to_uint - converts a bianry number to unsigned int
  * @b: string of 0 and 1 chars
  *
@@ -18,7 +39,7 @@ unsigned int binary_to_uint(const char *b)
 			if (b[index] == 49) /* if 1 */
 			{
 				value = len - index - 1;
-				decimal += (unsigned int)pow(2, value);
+				decimal += _pow(2, value);
 			}
 		}
 		else
