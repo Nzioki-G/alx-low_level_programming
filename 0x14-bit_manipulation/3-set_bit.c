@@ -51,6 +51,9 @@ int set_bit(unsigned long int *n, unsigned int index)
 {
 	unsigned long int e, num = *n;
 
+	if (!n)
+		return (-1);
+
 	while (num > 0)
 	{
 		e = find_power(num);
