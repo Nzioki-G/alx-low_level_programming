@@ -50,25 +50,32 @@ unsigned long int find_power(unsigned long int num)
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int binary = 0;
-	int e;
+	int e, prev_e = 0;
 
-	while (n > 0)
+	if (n == 0)
+		putchar('0');
+
+	while (n > 0) /* eg n = 98 */
 	{
-		e = find_power(n);
-		n -= _pow(2, e); /* reduce n */
-		binary += _pow(10, e); /* develop the binary number */
+		e = find_power(n); /* e.g e = 6 */
+		n -= _pow(2, e); /* reduce n eg n = 98-64 */
+
+		while (prev_e - 1 > e)
+		{
+			putchar('0');
+			prev_e--;
+		}
+		if (prev_e - 1 == e || prev_e == 0)
+			putchar('0' + 1);
+
+		if (n == 0)
+		{
+			while (e > 0)
+			{
+				putchar('0');
+				e--;
+			}
+		}
+		prev_e = e;
 	}
-	printf("%ld", binary);
 }
-
-
-
-
-
-
-
-
-
-
-
