@@ -1,5 +1,6 @@
 #include "dog.h"
 #include <stdlib.h>
+#include <string.h>
 
 /**
   * new_dog - cretes a new instance of struct dog
@@ -18,8 +19,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (d == NULL)
 		return (NULL);
 
-	nm = (name) ? name : NULL;
-	own = (owner) ? owner : NULL;
+	nm = (name) ? strdup(name) : NULL;
+	own = (owner) ? strdup(owner) : NULL;
 
 	d->name = nm;
 	d->age = age;
