@@ -15,12 +15,12 @@ hash_table_t *hash_table_create(unsigned long int size)
 	/* allocate memo for the array */
 	array = malloc(size);
 	if (!array)
-		return NULL;
+		return (NULL);
 
 	/* allocate mem for hash table */
 	new_ht = malloc(sizeof(hash_table_t));
 	if (!new_ht)
-		return NULL;
+		return (NULL);
 
 	/* init the ht */
 	new_ht->size = size;
