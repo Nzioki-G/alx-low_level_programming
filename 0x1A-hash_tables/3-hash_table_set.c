@@ -10,7 +10,6 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	int index;
-	unsigned long int size = ht->size;
 	hash_node_t **array = ht->array, *new_pair = NULL, *current;
 
 	/* create the new node with k/v */
@@ -22,7 +21,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new_pair->value = strdup(value);
 	new_pair->next = NULL;
 
-	index = hash_djb2((const unsigned char *)key) % size;
+	index = key_index((const unsigned char *)key, ht->size);
 	current = array[index];
 
 	if (current == NULL)
