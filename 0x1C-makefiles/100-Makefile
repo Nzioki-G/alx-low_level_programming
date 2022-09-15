@@ -1,0 +1,16 @@
+# variables
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:%.c=%.o)
+NAME = school
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# rules
+all: m.h $(OBJ)
+	$(CC) $? -o $(NAME)
+clean:
+	$(RM) *~ school
+oclean:
+	$(RM) $(OBJ)
+fclean: clean oclean
+re: oclean all
