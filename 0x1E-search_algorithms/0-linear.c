@@ -5,20 +5,21 @@
  * @array: pointer to 1st element of an array
  * @size: the lenght of the array
  * @value: the value to search for
- * Return: the @value if found else -1
+ * Return: the index of @value if found else -1
  */
 int linear_search(int *array, size_t size, int value)
 {
 	size_t i;
 
-	if (!array)
+	/* if array is empty or size is 0 */
+	if (!array || !size)
 		return (-1);
 
 	for (i = 0; i < size; i++)
 	{
 		printf("Value checked array[%ld] = [%d]\n", i, array[i]);
 		if (array[i] == value)
-			return (array[i]);
+			return (i);
 	}
 	return (-1);
 }
