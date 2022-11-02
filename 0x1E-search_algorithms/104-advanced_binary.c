@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 void print_arr(int *arr, size_t start_idx, size_t end_idx);
+int recurse_binary(int *array, size_t low, size_t upper, int target);
 
 /**
  * advanced_binary - search for @value in @array
@@ -11,32 +12,38 @@ void print_arr(int *arr, size_t start_idx, size_t end_idx);
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	size_t i, lower, mid, upper;
+	size_t lower, upper;
 
 	if (!array || !size)
 		return (-1);
 	lower = 0;
 	upper = size - 1;
 
-	while (lower < upper)
-	{
-		printf("Searching in array: ");
-		print_arr(array, lower, upper);
+	return (recurse_binary(array, lower, upper, value));
+}
 
-		mid = (lower + upper) / 2;
-		/* when we get a match, loop back to its first occurrence */
-		if (array[mid] == value)
-		{
-			i = mid;
-			while (array[i - 1] == value)
-				i--;
-			return (i);
-		}
-		else if (array[mid] > value)
-			upper = mid - 1;
-		else
-			lower = mid + 1;
+int recurse_binary(int *array, size_t low, size_t upper, int target)
+{
+	int mid = (low + upper) / 2;
+
+	printf("Searching in array: ");
+	print_arr(array, low, upper);
+
+	/* base case: we find a match */
+	if (array[mid] == target)
+	{
+		return (mid);
 	}
+	/* or loop runs out */
+	if (low >= upper)
+		return (-1);
+
+	/* recursive case: we don't find a match */
+	if (target < array[mid])
+		return recurse_binary(array, low, mid - 1, target);
+	else
+		return recurse_binary(array, mid + 1, upper, target);
+
 	return (-1);
 }
 
