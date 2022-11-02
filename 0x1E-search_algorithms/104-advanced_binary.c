@@ -22,6 +22,15 @@ int advanced_binary(int *array, size_t size, int value)
 	return (recurse_binary(array, lower, upper, value));
 }
 
+
+/**
+ * recurse_binary - splits array into two each time and finds match recursively
+ * @array: the array to split & search
+ * @low: the lower bound of subarray
+ * @upper: the upper bound of subarray
+ * @target: The value to search for
+ * Return: index of 1st occurrence of @value in subarray
+ */
 int recurse_binary(int *array, size_t low, size_t upper, int target)
 {
 	int mid = (low + upper) / 2;
