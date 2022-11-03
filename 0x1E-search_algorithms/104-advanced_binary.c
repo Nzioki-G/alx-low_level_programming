@@ -43,7 +43,7 @@ int recurse_binary(int *array, size_t low, size_t upper, int target)
 	{
 		/* if previous element is a match, go back in search of 1st occurrence */
 		if (array[mid - 1] == target)
-			return (recurse_binary(array, low, mid - 1, target));
+			return (recurse_binary(array, low, mid, target));
 		else
 			return (mid);
 	}
@@ -52,7 +52,7 @@ int recurse_binary(int *array, size_t low, size_t upper, int target)
 		return (-1);
 
 	/* recursive case: we don't find a match */
-	if (target < array[mid])
+	if (target <= array[mid])
 		return (recurse_binary(array, low, mid, target));
 	else
 		return (recurse_binary(array, mid + 1, upper, target));
