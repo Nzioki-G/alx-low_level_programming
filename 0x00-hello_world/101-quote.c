@@ -6,8 +6,9 @@
   */
 int main(void)
 {
-	fwrite(
-"and that piece of art is useful\" - Dora Korpar, 2015-10-19\n\n",
-59, 1, stderr);
+	char *ptr = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+
+	/* fwrite(source_location, size_of_data, items_of_data, destination_file) */
+	fwrite(ptr, 59, 1, stderr);
 	return (1);
 }
