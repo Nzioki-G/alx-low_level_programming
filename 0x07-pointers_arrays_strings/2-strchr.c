@@ -9,20 +9,17 @@
 char *_strchr(char *s, char c)
 {
 	int i = 0;
-	char *ptr = NULL;
 
 	/* loop to the end of string s */
 	while (s[i])
 	{
 		/* if you find a match, return its address in memory */
 		if (s[i] == c)
-		{
-			ptr = &s[i];
-			break;
-		}
+			return (&s[i]);
 		i++;
 	}
+
 	if  (!c)
 		return (&s[i]);
-	return (ptr);
+	return (NULL);
 }
