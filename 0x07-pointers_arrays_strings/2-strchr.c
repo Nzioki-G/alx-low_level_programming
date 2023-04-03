@@ -9,19 +9,15 @@
 char *_strchr(char *s, char c)
 {
 	int i = 0;
-	char *ptr_to_c = NULL;
 
 	/* loop to the end of string s */
 	while (s[i])
 	{
-		/* if you find a match, point to its address in memory */
+		/* if you find a match, return to its address in memory */
 		if (s[i] == c)
-		{
-			ptr_to_c = &s[i];
-			break;
-		}
+			return (&s[i]);
 		i++;
 	}
 
-	return (ptr_to_c);
+	return (NULL);
 }
