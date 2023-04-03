@@ -8,7 +8,7 @@
   */
 char *_strstr(char *haystack, char *needle)
 {
-	int h = 0, n = 0;
+	unsigned long int h = 0, n = 0;
 	char *substring;
 
 	/* edge case: empty string */
@@ -23,6 +23,8 @@ char *_strstr(char *haystack, char *needle)
 			break;
 		h++;
 	}
+	if (h == strlen(haystack))
+		return (NULL);
 
 	while ((haystack[h] == needle[n]) && haystack[h] && needle[n])
 	{
