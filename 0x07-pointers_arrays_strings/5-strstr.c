@@ -8,30 +8,25 @@
   */
 char *_strstr(char *haystack, char *needle)
 {
-	int h = 0, n = 0, match_begins;
-	char *ptr_needle = NULL;
+	int h = 0, n = 0;
 
 	/* loop through haystack */
 	while (haystack[h])
 	{
 		/* search for first char of needle in hasystack */
 		if (haystack[h] == needle[0])
-		{
-			match_begins = h;
-			while ((haystack[h] == needle[n])
-&& haystack[h] && needle[n])
-			{
-				/* if they match to end, it's a substring */
-				if (!(needle[n + 1]))
-				{
-					ptr_needle = &haystack[match_begins];
-					return (ptr_needle);
-				}
-				h++;
-				n++;
-			}
-		}
+			break;
 		h++;
 	}
-	return (ptr_needle);
+
+	while ((haystack[h] == needle[n]) && haystack[h] && needle[n])
+	{
+		/* if they match to end, it's a substring */
+		if (!(needle[n + 1]))
+			return (needle);
+		h++;
+		n++;
+	}
+
+	return (NULL);
 }
