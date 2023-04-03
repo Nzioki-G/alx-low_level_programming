@@ -9,6 +9,11 @@
 char *_strstr(char *haystack, char *needle)
 {
 	int h = 0, n = 0;
+	char *substring;
+
+	/* edge case: empty string */
+	if (strlen(needle) == 0)
+		return (needle);
 
 	/* loop through haystack */
 	while (haystack[h])
@@ -22,10 +27,13 @@ char *_strstr(char *haystack, char *needle)
 	while ((haystack[h] == needle[n]) && haystack[h] && needle[n])
 	{
 		/* if they match to end, it's a substring */
-		if (!(needle[n + 1]))
-			return (needle);
 		h++;
 		n++;
+		if (!(needle[n]))
+		{
+			substring = needle;
+			return (substring);
+		}
 	}
 
 	return (NULL);
