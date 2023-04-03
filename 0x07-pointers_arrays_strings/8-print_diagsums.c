@@ -8,9 +8,22 @@
   */
 void print_diagsums(int *a, int size)
 {
-	int row, col, index = 0, sum_left = 0, sum_right = 0;
+	int i, idx_r, idx_l, right_sum = 0, left_sum = 0;
 
-	for (row = 0; row < size; row++)
+	/* O(n) time where n is the number of rows */
+	for (i = 0; i < size; i++)
+	{
+		idx_r = size * i + i;
+		idx_l = (size - 1) * (i + 1);
+		right_sum += a[idx_r];
+		left_sum += a[idx_l];
+	}
+
+	printf("%d, %d\n", right_sum, left_sum);
+
+	/* int row, col, index = 0, sum_left = 0, sum_right = 0; */
+
+	/* for (row = 0; row < size; row++)
 	{
 		for (col = 0; col < size; col++)
 		{
@@ -38,4 +51,5 @@ void print_diagsums(int *a, int size)
 	}
 
 	printf("%d\n", sum_right);
+	*/
 }
