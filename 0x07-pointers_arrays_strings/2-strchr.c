@@ -22,6 +22,7 @@ char *_strchr(char *s, char c)
 		}
 		i++;
 	}
-
+	if  (!c)
+		return (&s[i]);
 	return (ptr);
 }
