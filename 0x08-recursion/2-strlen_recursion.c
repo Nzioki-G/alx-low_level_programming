@@ -7,13 +7,9 @@
   */
 int _strlen_recursion(char *s)
 {
-	int length = 0;
-
 	/* when you get to the end */
-	if (!s[length])
+	if (!s[0])
 		return (0);
-	length++;
-
 	/* call the fn with 1 less char */
-	return (length + _strlen_recursion(&s[length]));
+	return (1 + _strlen_recursion(&s[1]));
 }
