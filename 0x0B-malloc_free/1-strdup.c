@@ -9,25 +9,20 @@ char *_strdup(char *str)
 {
 	int i, n;
 	char *dupe;
+
 	/* if str == NULL */
 	if (!str)
-	{
 		return (NULL);
-	}
 
 	n = strlen(str);
-	dupe = malloc(n * sizeof(char));
+	dupe = malloc(n * sizeof(char) + 1);
 
 	/* confirm it malloc'ed */
 	if (dupe)
 	{
 		/* copy the str into dupe */
 		for (i = 0; i < n; i++)
-		{
 			*(dupe + i) = *(str + i);
-		}
-		return (dupe);
 	}
-	else
-		return (NULL);
+	return (dupe);
 }
