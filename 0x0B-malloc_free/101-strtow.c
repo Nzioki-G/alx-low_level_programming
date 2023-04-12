@@ -16,7 +16,7 @@ char **strtow(char *str)
 		return (NULL);
 
 	/* allocate same length as initial string */
-	words = malloc(2 * strlen(str) * sizeof(char));
+	words = malloc(2 * strlen(str) * sizeof(char) + 1);
 
 	start_of_word = 0;
 	for (i = 0; i < strlen(str); i++)
@@ -33,15 +33,29 @@ char **strtow(char *str)
 			return (words);
 
 		/* find when a word ends */
-		if ((i + 1) == strlen(str) ||
+		if (i == strlen(str) - 1 ||
 (str[i] == ' ' && i > 0 && str[i - 1] != ' '))
 		{
+			if (i == strlen(str) - 1)
+				i += 1;
+
 			/* call function to create the word */
 			newWord = form_word(str, start_of_word, i);
-			*(words + w_count) = newWord;
-			w_count++;
-			prev_word = i;
+			if (!newWord)
+				free(newWord);
+			else
+			{
+				*(words + w_count) = newWord;
+				w_count++;
+				prev_word = i;
+			}
 		}
+	}
+	*(words + w_count) = NULL;
+	if (!words[0])
+	{
+		free(words);
+		return (NULL);
 	}
 	return (words);
 }
