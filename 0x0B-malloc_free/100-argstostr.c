@@ -18,7 +18,7 @@ char *argstostr(int ac, char **av)
 	/* get total length of args */
 	for (i = 0; i < ac; i++)
 		len += strlen(av[i]);
-	len += (2 * ac);
+	len += ac;
 	args_string = malloc(len * sizeof(char));
 
 	for (arg = 0; arg < ac; arg++)
