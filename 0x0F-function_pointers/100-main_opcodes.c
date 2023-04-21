@@ -9,7 +9,8 @@
  */
 int main(int argc, char **argv)
 {
-	int bytes, *address;
+	int bytes; 
+	char *address;
 
 	if (argc != 2)
 	{
@@ -25,10 +26,10 @@ int main(int argc, char **argv)
 
 	/**
 	 * main type: ‘int (*)(int,  char **)’
-	 * cast it into (any?) non-void pointer type
+	 * cast it into (any? see line 50 & 53) non-void pointer type
 	 * get the address of the first code-byte of main
 	 */
-	address = (int *)&main;
+	address = (char *)&main;
 
 	while (bytes > 1)
 	{
@@ -44,3 +45,10 @@ int main(int argc, char **argv)
 	printf("%02hhx\n", *address++);
 	return (0);
 }
+/*
+f3 55 48 89 89 7d 19 3b 48 af bf 00 ff 45 c0 00 e8 ff 83 79 05
+...with (int *)-----> every 4 bytes
+
+f3 0f 1e fa 55 48 89 e5 48 83 ec 20 89 7d ec 48 89 75 e0 83 7d
+...with (char *) ----> every byte
+*/
