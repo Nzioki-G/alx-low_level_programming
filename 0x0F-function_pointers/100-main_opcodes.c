@@ -9,8 +9,7 @@
  */
 int main(int argc, char **argv)
 {
-	int bytes, i;
-	int (*location)(int,  char **) = main;
+	int bytes, *address;
 
 	if (argc != 2)
 	{
@@ -24,10 +23,23 @@ int main(int argc, char **argv)
 		exit(2);
 	}
 
-	while (i < bytes)
+	/**
+	 * main type: ‘int (*)(int,  char **)’
+	 * cast it into (any?) non-void pointer type
+	 * get the address of the first code-byte of main
+	 */
+	address = (int *)&main;
+
+	while (bytes)
 	{
-		printf("%p ", *(location + i));
-		i++;
+		/**
+		 * dereference address, unearth opcode!
+		 * The hh modifier(as per chatGPT) indicates
+		 * a char integer arguement
+		 * 02: print the last 2 hex digits
+		 */
+		printf("%02hhx ", *address++);
+		bytes--;
 	}
 	printf("\n");
 	return (0);
