@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 	 */
 	address = (int *)&main;
 
-	while (bytes)
+	while (bytes > 1)
 	{
 		/**
 		 * dereference address, unearth opcode!
@@ -41,6 +41,6 @@ int main(int argc, char **argv)
 		printf("%02hhx ", *address++);
 		bytes--;
 	}
-	printf("\n");
+	printf("%02hhx\n", *address++);
 	return (0);
 }
