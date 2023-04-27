@@ -1,3 +1,5 @@
+; ref: ChatGPT March 23 Version helped a LOT! learnt ASM in hours
+
 section .data
     hi db 'Hello, Holberton', 10, 0 ; format string to printf
           
@@ -18,3 +20,5 @@ main:
     xor eax, eax       ; return 0
     pop rbp            ; restore base ptr
     ret                ; return to os
+
+; this code STILL gives me a seg fault in my machine
