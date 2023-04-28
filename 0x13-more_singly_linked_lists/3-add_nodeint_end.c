@@ -2,10 +2,10 @@
 
 /**
  * add_nodeint_end - adds a ode to the end of linked list
- * @head: double pointer to the first node
- * @n: value of element
+ * @head: pointer to the list
+ * @n: value of new node
  *
- * Return: pointert to new element on success otherwise NULL
+ * Return: list with new element on success otherwise NULL
  */
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
@@ -21,17 +21,16 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 
 	/* if list is empty */
 	if (!*head)
-		*head = new;
-	else
 	{
-		/* navigate to last element */
-		temp = *head;
-		while (temp->next)
-		{
-			temp = temp->next;
-		}
-		temp->next = new;
+		*head = new;
+		return (*head);
 	}
+
+	/* navigate to last element */
+	temp = *head;
+	while (temp->next)
+		temp = temp->next;
+	temp->next = new;
 
 	return (*head);
 }
