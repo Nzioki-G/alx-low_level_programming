@@ -2,7 +2,7 @@
 
 /**
  * free_listint2 - frees a list and sets head to NULL
- * @head: double pointer to first elemnt
+ * @head: ptr to the list
  * Return: nothing
  */
 void free_listint2(listint_t **head)
@@ -19,8 +19,7 @@ void free_listint2(listint_t **head)
 
 	while (*head)
 	{
-		temp = *head;
-		temp = temp->next; /* hold next link */
+		temp = (*head)->next; /* hold next link */
 		free(*head); /* free current */
 		*head = temp; /* advance to next */
 	}
