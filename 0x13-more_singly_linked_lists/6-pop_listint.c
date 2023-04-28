@@ -2,46 +2,22 @@
 
 /**
  * pop_listint - deletes head node
- * @head: double pointer to first element
+ * @head: pointer to the list
  *
- * Return: data of head node on success else 0
+ * Return: data of node removed on success else 0
  */
 int pop_listint(listint_t **head)
 {
-	int val;
+	int val = 0;		/* default return 0 */
 	listint_t *temp;
 
 	if (!*head)
 		return (0);
 
-	/*
-	 * first => *head == temp
-	 * 1st val => temp->n
-	 * second=> temp->next
-	 * temp = temp->next;
-	 * second => temp
-	 * free(*head)
-	 * head = temp
-	 */
-	temp = *head;
-	val = temp->n;
-	temp = temp->next;
-	free(*head);
-	*head = temp;
+	val = (*head)->n;	/* the value to return */
+	temp = (*head)->next;	/* hold the 2nd node */
+	free(*head);		/* free first node */
+	*head = temp;		/* break the link */
+
 	return (val);
-
-	/*temp = *head; * hold first */
-	/**head = temp->next; * set 2nd as first */
-
-	/*
-	* if the next val exists
-	* if (*head)
-	* {
-	*	val = temp->next->n;
-	*	free(temp);
-	*	return (val);
-	* }
-	* else
-	*	return (0);
-	*/
 }
