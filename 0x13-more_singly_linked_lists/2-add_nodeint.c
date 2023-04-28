@@ -2,10 +2,10 @@
 
 /**
  * add_nodeint - adds a node at the beginning of a list
- * @head: double pointer to head
+ * @head: the list
  * @n: the value to add
  *
- * Return: pointer to the neww elemnts on success else NULL
+ * Return: list on success else NULL
  */
 listint_t *add_nodeint(listint_t **head, const int n)
 {
