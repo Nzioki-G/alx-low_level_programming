@@ -17,7 +17,7 @@ size_t free_listint_safe(listint_t **h)
 	count = find_list_length(*h);
 
 	/* find and remove loop */
-	while (i < count)
+	while (i <= count)
 	{
 		tmp = current->next;
 		free(current);
