@@ -13,7 +13,7 @@ size_t print_listint_safe(const listint_t *head)
 	const listint_t *slow = head, *fast = head;
 
 	if (!head)
-		return (0);
+		exit(98);
 
 	while (slow)
 	{
@@ -38,5 +38,6 @@ size_t print_listint_safe(const listint_t *head)
 		fast = fast->next;
 		i++;
 	}
+	printf("count: %d\n", i);
 	return (i);
 }
