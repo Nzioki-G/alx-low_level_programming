@@ -10,40 +10,32 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	int i = 0;
-	listint_t *slow = head->next, *fast = head->next;
+	const listint_t *slow = head, *fast = head;
 
 	if (!head)
 		return (0);
-	printf("[%p] %d\n", (void *)head, head->n); /* print 1st */
-	while (slow && fast && fast->next)
+
+	while (slow)
 	{
 		printf("[%p] %d\n", (void *)slow, slow->n);
 		slow = slow->next;
-		fast = fast->next->next;
+		if (fast)
+			fast = fast->next ? fast->next->next : NULL;
+		i++;
 		if (slow == fast) /* clash point */
 		{
-			/* we have a loop */
-			while (1)
-			{
-				/* if we get to beginning of loop */
-				if (slow->next == head)
-				{
-					printf("[%p] %d\n", (void *)slow, slow->n);
-					slow->next = NULL;
-					break;
-				}
-				while (slow->next != fast && slow->next != head)
-					slow = slow->next;
-				head = head->next;/* increment head */
-				slow = fast; /* reset slow to clash point */
-			}
+			slow = head;
+			break;
 		}
-		i++;
+
 	}
-	while (slow) /* if no loop, then we exited before end of list */
+
+	/* we have a loop */
+	while (slow && fast && slow != fast)
 	{
-		printf("[%p] %d\n", (void *)slow, slow->n);
+		printf("[%p] %d\n", (void *)fast, fast->n);
 		slow = slow->next;
+		fast = fast->next;
 		i++;
 	}
 	return (i);
