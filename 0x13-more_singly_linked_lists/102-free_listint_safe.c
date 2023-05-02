@@ -8,37 +8,54 @@
  */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *current, *tmp, *fore;
-	size_t count = 0;
+	listint_t *current, *tmp;
+	size_t i = 0, count;
 
-	current = *h;
-	fore = *h;
+	if (!*h)
+		return (0);
+
+	count = find_list_length(*h);
 
 	/* find and remove loop */
-	while (current->next)
+	while (i < count)
 	{
-		if (fore)
-			fore = !fore->next ? NULL : fore->next->next;
 		tmp = current->next;
 		free(current);
 		current = tmp;
-		count++;
+		i++;
+	}
 
-		/* deal with a looping list */
-		if (current && current == fore)
+	*h = NULL;
+	return (count);
+}
+
+/**
+ * find_list_length - gets the length of list regardless of loop
+ * @head: first node of list
+ * Return: length of list
+ */
+size_t find_list_length(listint_t *head)
+{
+	listint_t *current = head, *fore = head;
+	size_t len = 0;
+
+	while (current)
+	{
+		current = current->next;
+		len++;
+		if (fore)
+			fore = !fore->next ? NULL : fore->next->next;
+		if (current == fore)
 		{
-			fore = *h;
+			current = head;
 			while (current != fore)
 			{
-				tmp = current->next;
-				free(current);
-				current = tmp;
+				current = current->next;
 				fore = fore->next;
-				count++;
+				len++;
 			}
 			break;
 		}
 	}
-	*h = NULL;
-	return (count);
+	return (len);
 }
