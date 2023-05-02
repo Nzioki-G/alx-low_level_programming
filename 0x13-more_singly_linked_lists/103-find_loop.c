@@ -11,32 +11,31 @@ listint_t *find_listint_loop(listint_t *head)
 	listint_t *slow = head, *fast = head;
 
 	/* empty case */
-	if (!head)
-	{
+	if (!head || !head->next)
 		return (NULL);
-	}
 
-	while (slow && fast && fast->next)
+	while (slow)
 	{
 		slow = slow->next;
-		fast = fast->next->next;
+		fast = !fast->next ? NULL : fast->next->next;
+		if (!fast)
+			break;
+		printf("==>%d, %d\n", slow->n, fast->n);
 
-		if (fast == slow) /* if there exists a loop */
+		/* there's a point where the 2 pointers meet */
+		if (fast == slow)
 		{
-			while (1) /* true or break */
+			slow = head;
+
+			/* head to loop == meet_point to loop */
+			while (slow && fast && fast->next)
 			{
-				if (slow->next == head)
-					return (head);
-
-				while (slow->next != fast &&
-slow->next != head)
-					slow = slow->next;
-
-				head = head->next; /* increment head */
-				slow = fast;/* re-set slow to point of clash */
+				slow = slow->next;
+				fast = fast->next;
+				if (fast == slow)
+					return (fast);
 			}
 		}
 	}
-	/* no loop found */
 	return (NULL);
 }
