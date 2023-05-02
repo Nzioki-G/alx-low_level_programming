@@ -20,7 +20,6 @@ listint_t *find_listint_loop(listint_t *head)
 		fast = !fast->next ? NULL : fast->next->next;
 		if (!fast)
 			break;
-		printf("==>%d, %d\n", slow->n, fast->n);
 
 		/* there's a point where the 2 pointers meet */
 		if (fast == slow)
