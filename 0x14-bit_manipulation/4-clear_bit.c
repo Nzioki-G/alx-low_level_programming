@@ -12,18 +12,20 @@ int clear_bit(unsigned long int *n, unsigned int index)
 	unsigned int decimal = 1, tmp, i;
 
 	tmp = *n;
-	/* bring idx to "ones place value" */
-	tmp = tmp >> index;
-
-	for (i = 0; i < index; i++)
-		decimal *= 2;
-
-	/* error */
-	if (tmp % 2 == 1)
+	if (tmp != 0)
 	{
-		*n -= decimal;
+		/* bring idx to "ones place value" */
+		tmp = tmp >> index;
+
+		for (i = 0; i < index; i++)
+			decimal *= 2;
+
+		if (tmp % 2 == 1 && decimal <= *n)
+			*n -= decimal;
 		return (1);
 	}
+
+	/* error */
 	return (-1);
 }
 
