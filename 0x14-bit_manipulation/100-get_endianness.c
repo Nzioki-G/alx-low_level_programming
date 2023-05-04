@@ -9,7 +9,7 @@ int get_endianness(void)
 {
 	int n = 5;
 	char *hex;
-	
+
 	/**
 	 * if 5 takes 4 bytes in memory it will be:
 	 * 00000000 00000000 00000000 00000101
