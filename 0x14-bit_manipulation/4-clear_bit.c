@@ -9,16 +9,21 @@
  */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned int decimal = 1, i;
+	unsigned int decimal = 1, tmp, i;
+
+	tmp = *n;
+	/* bring idx to "ones place value" */
+	tmp = tmp >> index;
 
 	for (i = 0; i < index; i++)
 		decimal *= 2;
 
 	/* error */
-	if (decimal > *n)
+	if (tmp % 2 == 0)
 		return (-1);
 
 	*n -= decimal;
+	
 	return (1);
 }
 
