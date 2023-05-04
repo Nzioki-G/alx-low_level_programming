@@ -9,16 +9,16 @@
  */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned int dec = 1, i;
+	unsigned int decimal = 1, i;
 
 	for (i = 0; i < index; i++)
-		dec *= 2;
+		decimal *= 2;
 
 	/* error */
-	if (dec > *n)
+	if (decimal > *n)
 		return (-1);
 
-	*n -= dec;
+	*n -= decimal;
 	return (1);
 }
 
