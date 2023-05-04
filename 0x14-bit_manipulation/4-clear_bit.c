@@ -19,12 +19,12 @@ int clear_bit(unsigned long int *n, unsigned int index)
 		decimal *= 2;
 
 	/* error */
-	if (tmp % 2 == 0)
-		return (-1);
-
-	*n -= decimal;
-	
-	return (1);
+	if (tmp % 2 == 1)
+	{
+		*n -= decimal;
+		return (1);
+	}
+	return (-1);
 }
 
 
