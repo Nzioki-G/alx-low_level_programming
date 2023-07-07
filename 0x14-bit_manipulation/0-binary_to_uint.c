@@ -8,7 +8,7 @@
  */
 unsigned int binary_to_uint(const char *b)
 {
-	int last = strlen(b) - 1;
+	int last;
 	int e, idx;
 	int exponent = 0, result = 0, value;
 	char cha;
@@ -16,6 +16,7 @@ unsigned int binary_to_uint(const char *b)
 	if (!b)
 		return (0);
 
+	last = strlen(b) - 1;
 	for (idx = last; idx >= 0; idx--)
 	{
 		cha = *(b + idx);
