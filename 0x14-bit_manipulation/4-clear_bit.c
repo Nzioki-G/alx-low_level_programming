@@ -11,7 +11,11 @@ int clear_bit(unsigned long int *n, unsigned int index)
 {
 	unsigned long int bit, value, i;
 
-	if (*n >> index || *n == 0)
+	/* if n is not a number or index is out of range */
+	if (!n || index >= 64)
+		return (-1);
+
+	if (*n >> index || *n == 0 || (*n >> index) == 0)
 	{
 		bit = *n >> index;
 		if ((bit & 1) == 1)
@@ -21,7 +25,7 @@ int clear_bit(unsigned long int *n, unsigned int index)
 				value *= 2;
 			*n -= value;
 		}
-		return (*n);
 	}
-	return (-1);
+	return (1);
+
 }
