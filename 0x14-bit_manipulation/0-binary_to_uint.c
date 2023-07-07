@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * binary_to_unit - converts binary number given as a string to a decimal
- * b: immutable string representation of binary number 
+ * binary_to_uint - converts binary number given as a string to a decimal
+ * @b: immutable string representation of binary number
  *
  * Return: the number in decimal
  */
@@ -12,6 +12,9 @@ unsigned int binary_to_uint(const char *b)
 	int e, idx;
 	int exponent = 0, result = 0, value;
 	char cha;
+
+	if (!b)
+		return (0);
 
 	for (idx = last; idx >= 0; idx--)
 	{
