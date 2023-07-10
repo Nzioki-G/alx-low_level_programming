@@ -58,7 +58,7 @@ int close_err(int fd)
  */
 int main(int argc, char **argv)
 {
-	int fd_from, fd_to, w_ok, bytes;
+	int fd_from, fd_to, w_ok, bytes, c1, c2;
 	char *src, *dest;
 	char *buf;
 
@@ -94,6 +94,13 @@ S_IRGRP | S_IWGRP | S_IROTH);
 		if (w_ok != bytes)
 			dest_err(dest);
 	}
+	c1 = close(fd_from);
+	if (c1 == -1)
+		close_err(fd_from);
+
+	c2 = close(fd_to)
+	if (c2 == -1)
+		close_err(fd_from);
 
 	return (1);
 }
