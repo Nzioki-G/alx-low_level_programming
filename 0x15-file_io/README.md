@@ -4,7 +4,7 @@
 * append to file
 * copy from file1 to file2
 
-###Notes<br>
-1. open flags: <br>O_RDONLY(0), O_WRONLY(1), O_RDWR(2), O_CREAT, O_TRUNC
-2. access modes: <br>S_IRWXU, S_IRUSR, ... ```man 2 open```
+### Notes<br>
+1. open flags: <br>```O_RDONLY(0)```<br> ```O_WRONLY(1)```<br> ``` O_RDWR(2)```<br> ```O_CREAT```<br> ```O_TRUNC```<br>
+2. access modes: <br>```S_IRWXU```<br> ```S_IRUSR```<br> ... ```man 2 open```
 3. man pages: <br> read, write, open, close
