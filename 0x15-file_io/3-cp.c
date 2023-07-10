@@ -98,7 +98,7 @@ S_IRGRP | S_IWGRP | S_IROTH);
 	if (c1 == -1)
 		close_err(fd_from);
 
-	c2 = close(fd_to)
+	c2 = close(fd_to);
 	if (c2 == -1)
 		close_err(fd_from);
 
