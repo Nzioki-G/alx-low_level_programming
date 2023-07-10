@@ -22,16 +22,17 @@ int create_file(const char *filename, char *text_content)
 	/* file = fopen(filename, "w+"); */
 	/* set file's permission to -rw------ */
 	/* ok = chmod(filename, S_IRUSR | S_IWUSR); */
-
 	/* write to file the content of the input string given */
 	if (text_content)
 	{
 		ok = write(fd, text_content, strlen(text_content));
-		if (ok < strlen(text_content))
+		if (ok == -1)
 			return (-1);
 	}
 
 	close(fd);
+	if (fd == -1)
+		return (-1);
 
 	return (1);
 }
