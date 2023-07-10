@@ -19,9 +19,6 @@ int create_file(const char *filename, char *text_content)
 	if (fd == -1)
 		return (-1);
 
-	/* file = fopen(filename, "w+"); */
-	/* set file's permission to -rw------ */
-	/* ok = chmod(filename, S_IRUSR | S_IWUSR); */
 	/* write to file the content of the input string given */
 	if (text_content)
 	{
