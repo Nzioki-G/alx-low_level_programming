@@ -95,7 +95,7 @@ S_IRGRP | S_IWGRP | S_IROTH);
 	}
 	if (close(fd_from) == -1)
 		close_err(fd_from);
-	if (close(fd_from) == -1)
+	if (close(fd_to) == -1)
 		close_err(fd_from);
 
 	return (0);
