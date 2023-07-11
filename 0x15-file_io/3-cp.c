@@ -7,7 +7,7 @@
  * args_err - prints error on incorrect number of args
  * Return: exit 97
  */
-int args_err()
+int args_err(void)
 {
 	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 	exit(97);
@@ -58,9 +58,8 @@ int close_err(int fd)
  */
 int main(int argc, char **argv)
 {
-	int fd_from, fd_to, w_ok, bytes, c1, c2;
-	char *src, *dest;
-	char *buf;
+	int fd_from, fd_to, w_ok, bytes;
+	char *src, *dest, *buf;
 
 	if (argc != 3)
 		args_err();
@@ -73,7 +72,7 @@ int main(int argc, char **argv)
 	if (fd_from == -1)
 		src_err(src);
 
-	/* open destination file, -rw-rw-r-- */
+	/* open / create destination file, -rw-rw-r-- */
 	fd_to = open(dest, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR |
 S_IRGRP | S_IWGRP | S_IROTH);
 	if (fd_to == -1)
@@ -94,12 +93,9 @@ S_IRGRP | S_IWGRP | S_IROTH);
 		if (w_ok != bytes)
 			dest_err(dest);
 	}
-	c1 = close(fd_from);
-	if (c1 == -1)
+	if (close(fd_from) == -1)
 		close_err(fd_from);
-
-	c2 = close(fd_to);
-	if (c2 == -1)
+	if (close(fd_from) == -1)
 		close_err(fd_from);
 
 	return (0);
