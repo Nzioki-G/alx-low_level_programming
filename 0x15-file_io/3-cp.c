@@ -102,5 +102,5 @@ S_IRGRP | S_IWGRP | S_IROTH);
 	if (c2 == -1)
 		close_err(fd_from);
 
-	return (1);
+	return (0);
 }
