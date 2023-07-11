@@ -53,7 +53,7 @@ int close_err(int fd)
  * @argc: number of arguemnts at runtime
  * @argv: list of arguments given at runtime
  *
- * Return: 97 - incorrect argc, 98 - file1 doesnot exist,
+ * Return: 97 - incorrect argc, 98 - file1 does not exist,
  * 99 - creation of or write to file2 fails, 100 - close fails
  */
 int main(int argc, char **argv)
@@ -86,7 +86,9 @@ S_IRGRP | S_IWGRP | S_IROTH);
 		bytes = 0;
 		w_ok = -1;
 		bytes = read(fd_from, buf, 1024);
-		if (bytes <= 0)
+		if (bytes == -1)
+			src_err(src);
+		if (bytes == 0)
 			break;
 
 		w_ok = write(fd_to, buf, bytes);
