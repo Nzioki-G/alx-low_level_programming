@@ -5,6 +5,7 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <string.h>
+#define ElfN_Ehdr 64
 
 int isELF(char *filename);
 void print_magic(char *magic);
@@ -12,6 +13,7 @@ void architecture(int key);
 void data_encoding(int key);
 void version_num(int key);
 void os_abi(int key);
+void file_type(int key);
 
 /**
  * main - displays the info contained in the ELF header
@@ -24,8 +26,7 @@ int main(int ac, char **av)
 {
 	int fd, ok;
 	char magic[17], buf[10];
-	/*Elf64_Ehdr my_header;
-	EI_64IDENT field;*/
+	off_t offset;
 
 	if (ac != 2)
 	{
@@ -41,20 +42,35 @@ int main(int ac, char **av)
 	if (ok == -1)
 		exit(98);
 
+	/* Magic, Class, Data, Version, OS/ABI */
+	print_magic(magic);
+	architecture(magic[4]);
+	data_encoding(magic[5]);
+	version_num(magic[6]);
+	os_abi(magic[7]);
+
+	printf("  ABI Version:\t\t\t     %d\n", magic[8]);
+
+	/* 16 of unsighed char? */
+	offset = 16 * sizeof(unsigned char);
+
 	/* set pointer to 5 then read 5 - 16 */
-	lseek(fd, -12, SEEK_CUR);
+	offset = lseek(fd, offset, SEEK_SET);
 	ok = read(fd, buf, 7);
 	if (ok == -1)
 		exit(98);
-
-	/* Magic, Class, Data, Version, OS/ABI */
-	print_magic(magic);
-	architecture(*(buf));
-	data_encoding(*(buf + 1));
-	version_num(*(buf + 2));
-	os_abi(*(buf + 3));
-
-	printf("  ABI Version:\t\t\t     %d\n", *(buf + 4));
+	file_type(buf[0]);
+	printf("  Entry point address:\t\t     0x%x\n", buf[3]);
+	/**
+	  * 0 - type
+	  * 1 - machine
+	  * 2 - version
+	  * 3 - entry
+	  * 4 - phoff
+	  * 5 - shoff
+	  * 6 - flags
+	  * 7 - ehsize
+	  */
 
 	return (0);
 }
@@ -198,4 +214,24 @@ void os_abi(int key)
 			break;
 	}
 	printf("%s%s\n", s, str);
+}
+
+/**
+ * file_type - identifies and prints the object file type
+ * @key: the value of e_type in ELF file
+ * Return: nothing
+ */
+void file_type(int key)
+{
+	printf("  Type:\t\t\t\t     ");
+	if (key == 1)
+		printf("REL (relocatable file)\n");
+	else if (key == 2)
+		printf("EXEC (executable file)\n");
+	else if (key == 3)
+		printf("DYN (shared object)\n");
+	else if (key == 4)
+		printf("CORE (core file)\n");
+	else
+		printf("NONE (unknown type)\n");
 }
