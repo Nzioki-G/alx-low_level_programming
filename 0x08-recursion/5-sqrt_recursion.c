@@ -13,7 +13,7 @@ int _sqrt_recursion(int n)
 	else if (n < 3)
 		return (-1);
 
-	return (sqrt_helper((double) n, potential));
+	return ((int)(sqrt_helper((double) n, potential)));
 }
 
 /**
