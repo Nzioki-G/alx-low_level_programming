@@ -8,6 +8,7 @@
 int _sqrt_recursion(int n)
 {
 	double potential = n / 2;
+
 	if (n == 1)
 		return (1);
 	else if (n < 3)
